@@ -1,7 +1,7 @@
 import hashlib
 import typing as t
-from turbine import Turbine
-from turbine.runtime import Record
+
+from turbine.runtime import Record, Runtime
 
 
 def anonymize(records: t.List[Record]) -> t.List[Record]:
@@ -15,9 +15,7 @@ def anonymize(records: t.List[Record]) -> t.List[Record]:
             value_to_update["payload"]["after"]["email"] = hashed_email
             updated.append(
                 Record(
-                    key=record.key, 
-                    value=value_to_update, 
-                    timestamp=record.timestamp
+                    key=record.key, value=value_to_update, timestamp=record.timestamp
                 )
             )
         except Exception as e:
@@ -28,7 +26,7 @@ def anonymize(records: t.List[Record]) -> t.List[Record]:
 
 class App:
     @staticmethod
-    async def run(turbine: Turbine):
+    async def run(turbine: Runtime):
         try:
             # Get remote resource
             source = await turbine.resources("source_name")
@@ -49,4 +47,3 @@ class App:
             print(cpe)
         except Exception as e:
             print(e)
-

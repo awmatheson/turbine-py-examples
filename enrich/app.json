@@ -1,0 +1,7 @@
+{
+  "name": "enrich",
+  "language": "python",
+  "resources": {
+    "demopg": "fixtures/pg.json"
+  }
+}
