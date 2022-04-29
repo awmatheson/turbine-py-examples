@@ -1,7 +1,6 @@
 import hashlib
 import typing as t
-from turbine import Turbine
-from turbine.runtime import Record
+from turbine.runtime import Record, Runtime
 
 
 def anonymize(records: t.List[Record]) -> t.List[Record]:
